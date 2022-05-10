@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <my-head></my-head>
+    <my-good></my-good>
+    
+    <my-foot></my-foot>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+//@指向的是src目录
+import MyHead from '@/components/MyHead.vue'
+import MyGood from '@/components/MyGood.vue'
 
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
+import MyFoot from '@/components/MyFoot.vue'
+  export default {
+  components: { MyHead, MyGood, MyFoot },
+    
   }
-}
 </script>
+
+<style lang="less" scoped>
+
+</style>
