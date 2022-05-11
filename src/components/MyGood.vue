@@ -1,27 +1,36 @@
 <template>
   <div class="my-good-item">
     <div class="left">
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="input" />
-        <label for="input">
-          <img src="../assets/01.jpg" alt="" />
+      <div class="left-inp custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          v-model="gObj.goods_state"
+          class="custom-control-input"
+          :id="gObj.id"
+        />
+        <label :for="gObj.id" class="custom-control-label">
+          <img :src="gObj.goods_img" alt="" />
         </label>
       </div>
     </div>
     <div class="right">
-      <div class="top">商品名字</div>
+      <div class="top">{{ gObj.goods_name }}</div>
       <div class="bottom">
-        <div class="price">￥100</div>
-        <my-count></my-count>
+        <div class="price">￥{{ gObj.goods_price }}</div>
+        <my-count :obj="gObj"></my-count>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import MyCount from './MyCount.vue';
+import MyCount from "./MyCount.vue";
 export default {
-  components: { MyCount },};
+  components: { MyCount },
+  props: {
+    gObj: Object,
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -31,27 +40,35 @@ export default {
   border-bottom: 1px solid #ccc;
   .left {
     width: 120px;
-    height: 120px;
-    margin-right: 8px;
-    border-radius: 10px;
+    img {
+      width: 110px;
+      height: 110px;
+      margin-right: 8px;
+      border-radius: 10px;
+    }
+    .left-inp {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
   .right {
     flex: 1;
     display: flex;
     flex-direction: column;
-    .top{
-        font-size:14px;
-        font-weight: 700;
+    .top {
+      font-size: 14px;
+      font-weight: 700;
     }
-    .bottom{
-        display: flex;
-        justify-content: space-between;
-        padding:5px 0;
-        align-items: center;
-        .price{
-            color:red;
-            font-weight: bold;
-        }
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      align-items: center;
+      .price {
+        color: red;
+        font-weight: bold;
+      }
     }
   }
 }
